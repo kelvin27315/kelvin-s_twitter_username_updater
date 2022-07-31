@@ -27,7 +27,7 @@ line_length = 120
 py_version = "py37"
 
 [[tool.pysen.lint.mypy_targets]]
-  paths = ["."]
+  paths = ["./username_updater"]
 
 [[tool.pysen.lint.source]]
   excludes = [".venv"]
