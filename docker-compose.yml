@@ -1,0 +1,7 @@
+version: '3'
+services:
+  pysen:
+    build: .
+    volumes:
+      - "./:/work"
+    working_dir: /work
