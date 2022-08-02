@@ -1,7 +1,8 @@
-from requests_oauthlib import OAuth1Session
-import requests
-from os import environ
 import datetime as dt
+from os import environ
+
+import requests
+from requests_oauthlib import OAuth1Session
 
 
 def make_username() -> str:
@@ -19,21 +20,16 @@ def create_session() -> OAuth1Session:
     consumer_api_key = environ.get("CONSUMER_API_KEY")
     consumer_api_key_secret = environ.get("CONSUMER_API_KEY_SECRET")
 
-    session = OAuth1Session(
-        consumer_api_key,
-        consumer_api_key_secret,
-        access_token,
-        access_token_secret
-    )
+    session = OAuth1Session(consumer_api_key, consumer_api_key_secret, access_token, access_token_secret)
     return session
 
 
-def print_error(req: requests.models.Response):
+def print_error(req: requests.models.Response) -> None:
     print("Status code: {}".format(req.status_code))
     print("Error message: {}".format(req.text))
 
 
-def update_username(username: str):
+def update_username(username: str) -> None:
     url = "https://api.twitter.com/1.1/account/update_profile.json"
     params = {"name": username}
 
@@ -43,7 +39,7 @@ def update_username(username: str):
         print_error(req)
 
 
-def main():
+def main() -> None:
     username = make_username()
     update_username(username)
 
